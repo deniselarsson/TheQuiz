@@ -1,13 +1,11 @@
 package com.deniselarsson.thequiz
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +22,7 @@ class MainActivity : AppCompatActivity() {
                     "Please enter your name", Toast.LENGTH_SHORT).show()
             }else{
                 val intent = Intent(this, QuizQuestionActivity::class.java)
+                //intent.putExtra(Constants.USER_NAME, et_name.text.toString())
                 startActivity(intent)
                 finish()
             }
