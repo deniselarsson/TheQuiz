@@ -5,4 +5,8 @@
     <string name="TextEnterName">Please enter your name</string>
     <string name="Name">Name</string>
     <string name="Start">Start</string>
+    <string name="Default">TODO, Default</string>
+    <string name="Submit">Submit</string>
+    <string name="OutOf">0/5</string>
+    <string name="Question">TODO, some text by default</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CCCCCC"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
 
@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
         android:text="@string/TextEnterName"
-        android:textColor="#7A8089"
         android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/tv_welcome"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="@+id/tv_welcome"
@@ -65,6 +65,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg"
         android:text="@string/Start"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/et_Name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_Name"
