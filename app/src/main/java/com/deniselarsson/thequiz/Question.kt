@@ -1,9 +1,8 @@
 package com.deniselarsson.thequiz
 
 //No function only data so we will add data before class
-//id Int so I know which question I am looking at
 data class Question(
-    val id : Int,
+    val id : Int, //id Int so I know which question I am looking at
     val question : String,
     val optionOne : String,
     val optionTwo : String,
