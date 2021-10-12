@@ -16,13 +16,13 @@
         android:minHeight="48dp"
         android:text="@string/Question"
         android:textAlignment="center"
-        android:textSize="22sp"
         android:textColor="@color/black"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.04000002" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="90dp"
         android:max="5"
         android:minHeight="50dp"
@@ -59,10 +59,14 @@
     <TextView
         android:id="@+id/tv_option_one"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/Default"
+        android:textAlignment="center"
         android:textColor="@color/black"
+        android:textIsSelectable="false"
         app:layout_constraintEnd_toEndOf="@+id/tv_progress"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
@@ -70,10 +74,13 @@
     <TextView
         android:id="@+id/tv_option_two"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:text="@string/Default"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_option_one"
         app:layout_constraintStart_toStartOf="@+id/tv_option_one"
         app:layout_constraintTop_toBottomOf="@+id/tv_option_one" />
@@ -81,10 +88,13 @@
     <TextView
         android:id="@+id/tv_option_three"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:text="@string/Default"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_option_two"
         app:layout_constraintStart_toStartOf="@+id/tv_option_two"
         app:layout_constraintTop_toBottomOf="@+id/tv_option_two" />
@@ -92,10 +102,13 @@
     <TextView
         android:id="@+id/tv_option_four"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:text="@string/Default"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_option_three"
         app:layout_constraintStart_toStartOf="@+id/tv_option_three"
         app:layout_constraintTop_toBottomOf="@+id/tv_option_three" />
