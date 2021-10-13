@@ -15,4 +15,5 @@
     <string name="Username">Username</string>
     <string name="score">Your score is 9/10</string>
     <string name="Finish">Finish</string>
+    <string name="Nickname">Enter a nickname</string>
 </resources>
