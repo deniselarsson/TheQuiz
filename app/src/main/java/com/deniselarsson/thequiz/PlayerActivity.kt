@@ -30,6 +30,11 @@ class PlayerActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
         }
+        btn_play.setOnClickListener{
+            val intent = Intent(this, QuizQuestionActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
 

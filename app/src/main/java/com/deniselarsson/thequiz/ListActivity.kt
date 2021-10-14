@@ -1,5 +1,6 @@
 package com.deniselarsson.thequiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -23,6 +24,11 @@ class ListActivity : AppCompatActivity() {
             for (i in 0 until data.size) {
                 result.append(data[i].id.toString() + " " + data[i].name + "\n")
             }
+        }
+        btn_back.setOnClickListener{
+                val intent = Intent(this, PlayerActivity::class.java)
+                startActivity(intent)
+                finish()
         }
     }
 }
