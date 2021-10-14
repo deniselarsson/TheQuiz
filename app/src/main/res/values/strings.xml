@@ -3,7 +3,6 @@
     <string name="Titel">The Quiz</string>
     <string name="Welcome">Welcome to The Quiz</string>
     <string name="TextEnterName">Please enter your name</string>
-    <string name="Name">Name</string>
     <string name="Start">Start</string>
     <string name="Default">TODO, Default</string>
     <string name="Submit">Submit</string>
@@ -16,4 +15,10 @@
     <string name="score">Your score is 9/10</string>
     <string name="Finish">Finish</string>
     <string name="Nickname">Enter a nickname</string>
+    <string name="DeleteAll">Delete All</string>
+    <string name="Delete">Delete</string>
+    <string name="Read">Read</string>
+    <string name="Save">Save</string>
+    <string name="EnterANickname">Enter a nickname</string>
+    <string name="Name">Name</string>
 </resources>
