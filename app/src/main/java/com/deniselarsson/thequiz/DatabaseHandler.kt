@@ -12,11 +12,9 @@ const val TABLE_NAME = "Users"
 const val COL_NAME = "name"
 const val COL_ID = "id"
 
-// Cursor factory = if not using pass NULL
 class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
 
-        // No DB - Then create
         val createTable = "CREATE TABLE $TABLE_NAME (" +
                 "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COL_NAME INTEGER)"
