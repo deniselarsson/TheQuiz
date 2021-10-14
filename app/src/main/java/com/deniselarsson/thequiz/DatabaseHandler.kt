@@ -5,9 +5,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import android.widget.Toast
 
-const val DATABASE_NAME = "MyQuiz"
+const val DATABASE_NAME = "TheQuiz"
 const val TABLE_NAME = "Users"
 const val COL_NAME = "name"
 const val COL_ID = "id"
@@ -25,7 +26,7 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         TODO("Not yet implemented")
     }
 
-    fun insertData(user : User) {
+    fun insertData(user: User) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COL_NAME, user.name)
@@ -38,7 +39,7 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
 
 
     @SuppressLint("Range")
-    fun readData() : MutableList<User> {
+    fun readData(): MutableList<User> {
         val list: MutableList<User> = ArrayList()
 
         val db = this.readableDatabase
@@ -57,4 +58,40 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         db.close()
         return list
     }
+
+    @SuppressLint("Range")
+    fun updateData(){
+        val db = this.writableDatabase
+        val query = "Select * From $TABLE_NAME"
+        var result = db.rawQuery(query,null)
+        if (result.moveToFirst()){
+            do {
+                var cv = ContentValues()
+                cv.put(COL_ID,result.getColumnIndex(COL_ID)+1)
+                db.update(TABLE_NAME, cv, "$COL_NAME+?",
+                    arrayOf(result.getString(result.getColumnIndex(COL_NAME))))
+            }while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+    }
+
+    fun deleteOneData(){
+        val db = this.writableDatabase
+        db.delete(TABLE_NAME, "$COL_ID=?", arrayOf(1.toString()))
+        db.close()
+    }
+
+    fun deleteAllData(){
+        val db = this.writableDatabase
+        db.delete(TABLE_NAME,null, null)
+        db.close()
+    }
 }
+
+
+
+
+
+
+

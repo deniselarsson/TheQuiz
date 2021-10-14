@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.activity_player.*
-import kotlinx.android.synthetic.main.activity_player.btn_read
 
 class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +27,15 @@ class ListActivity : AppCompatActivity() {
                 val intent = Intent(this, PlayerActivity::class.java)
                 startActivity(intent)
                 finish()
+        }
+
+            btn_update.setOnClickListener{
+            db.updateData()
+            btn_list.performClick()
+        }
+        btn_delete.setOnClickListener{
+            db.deleteOneData()
+            btn_list.performClick()
         }
     }
 }
