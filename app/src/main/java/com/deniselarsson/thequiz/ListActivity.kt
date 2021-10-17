@@ -34,7 +34,11 @@ class ListActivity : AppCompatActivity() {
             btn_list.performClick()
         }
         btn_delete.setOnClickListener{
-            db.deleteOneData()
+            db.deleteOneData(56)
+            btn_list.performClick()
+        }
+        btn_deleteAll.setOnClickListener{
+            db.deleteAllData()
             btn_list.performClick()
         }
     }

@@ -5,8 +5,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import android.widget.Toast
+import java.nio.file.Files.size
 
 const val DATABASE_NAME = "TheQuiz"
 const val TABLE_NAME = "Users"
@@ -15,6 +15,7 @@ const val COL_ID = "id"
 
 class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
+         val list: MutableList<User> = ArrayList()
 
         val createTable = "CREATE TABLE $TABLE_NAME (" +
                 "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -76,19 +77,21 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         db.close()
     }
 
-    fun deleteOneData(){
+    fun deleteOneData(id: Int){
         val db = this.writableDatabase
-        db.delete(TABLE_NAME, "$COL_ID=?", arrayOf(1.toString()))
+        //db.delete(TABLE_NAME, "$COL_ID=?", arrayOf(34.toString()))
+        db.execSQL("DELETE FROM $TABLE_NAME WHERE $COL_ID=$id")
         db.close()
     }
+
+
 
     fun deleteAllData(){
         val db = this.writableDatabase
-        db.delete(TABLE_NAME,null, null)
+        db.delete(TABLE_NAME, null, null)
         db.close()
     }
 }
-
 
 
 
