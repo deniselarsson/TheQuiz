@@ -15,7 +15,7 @@ const val COL_ID = "id"
 
 class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
-         val list: MutableList<User> = ArrayList()
+        val list: MutableList<User> = ArrayList()
 
         val createTable = "CREATE TABLE $TABLE_NAME (" +
                 "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -60,38 +60,31 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         return list
     }
 
-    @SuppressLint("Range")
-    fun updateData(){
+   @SuppressLint("Range")
+    fun updateData() {
         val db = this.writableDatabase
         val query = "Select * From $TABLE_NAME"
-        var result = db.rawQuery(query,null)
-        if (result.moveToFirst()){
+        var result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
             do {
                 var cv = ContentValues()
-                cv.put(COL_ID,result.getColumnIndex(COL_ID)+1)
-                db.update(TABLE_NAME, cv, "$COL_NAME+?",
-                    arrayOf(result.getString(result.getColumnIndex(COL_NAME))))
-            }while (result.moveToNext())
+                cv.put(COL_ID, result.getColumnIndex(COL_ID) + 1)
+                db.update(
+                    TABLE_NAME, cv, "$COL_NAME+?",
+                    arrayOf(result.getString(result.getColumnIndex(COL_NAME)))
+                )
+            } while (result.moveToNext())
         }
         result.close()
         db.close()
     }
-
-    fun deleteOneData(id: Int){
-        val db = this.writableDatabase
-        //db.delete(TABLE_NAME, "$COL_ID=?", arrayOf(34.toString()))
-        db.execSQL("DELETE FROM $TABLE_NAME WHERE $COL_ID=$id")
-        db.close()
-    }
-
-
-
-    fun deleteAllData(){
-        val db = this.writableDatabase
-        db.delete(TABLE_NAME, null, null)
+    fun deleteOneData(id: Int) {
+        val db = this.readableDatabase
+        db.execSQL("DELETE FROM $TABLE_NAME WHERE id=$id")
         db.close()
     }
 }
+
 
 
 
