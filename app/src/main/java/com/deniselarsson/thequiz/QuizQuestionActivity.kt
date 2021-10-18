@@ -6,9 +6,15 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_question.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -25,8 +31,26 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
-        mQuestionList = Constants.getQuestions()
-        setQuestion()
+        // mQuestionList = Constants.getQuestions()
+        var rf = Retrofit.Builder()
+            .baseUrl(QuestionApi.baseURL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var api = rf.create(QuestionApi::class.java)
+        var call = api.get()
+
+        call?.enqueue(object : Callback<ArrayList<Question?>?> {
+            override fun onResponse(call: Call<ArrayList<Question?>?>, response: Response<ArrayList<Question?>?>) {
+                var questions : ArrayList<Question> = response.body() as ArrayList<Question>
+                mQuestionList = questions
+                setQuestion()
+            }
+
+            override fun onFailure(call: Call<ArrayList<Question?>?>, t: Throwable) {
+                println("Failed to execute request")
+            }
+        })
 
         tv_option_one.setOnClickListener(this)
         tv_option_two.setOnClickListener(this)
@@ -46,9 +70,11 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         }else{
             btn_submit.text = "SUBMIT"
         }
+
+        progressBar.max = mQuestionList!!.size;
         progressBar.progress = mCurrentPosition
         tv_progress.text = "$mCurrentPosition" + "/" + progressBar.max
-        tv_question.text = question!!.question
+        tv_question.text = question!!.text
         tv_option_one.text = question.optionOne
         tv_option_two.text = question.optionTwo
         tv_option_three.text = question.optionThree
