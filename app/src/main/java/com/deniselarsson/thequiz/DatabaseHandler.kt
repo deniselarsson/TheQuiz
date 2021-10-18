@@ -6,14 +6,16 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import java.nio.file.Files.size
 
-const val DATABASE_NAME = "MyQuiz"
+const val DATABASE_NAME = "TheQuiz"
 const val TABLE_NAME = "Users"
 const val COL_NAME = "name"
 const val COL_ID = "id"
 
 class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
+        val list: MutableList<User> = ArrayList()
 
         val createTable = "CREATE TABLE $TABLE_NAME (" +
                 "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -25,7 +27,7 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         TODO("Not yet implemented")
     }
 
-    fun insertData(user : User) {
+    fun insertData(user: User) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COL_NAME, user.name)
@@ -38,7 +40,7 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
 
 
     @SuppressLint("Range")
-    fun readData() : MutableList<User> {
+    fun readData(): MutableList<User> {
         val list: MutableList<User> = ArrayList()
 
         val db = this.readableDatabase
@@ -57,4 +59,35 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         db.close()
         return list
     }
+
+   @SuppressLint("Range")
+    fun updateData() {
+        val db = this.writableDatabase
+        val query = "Select * From $TABLE_NAME"
+        var result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                var cv = ContentValues()
+                cv.put(COL_ID, result.getColumnIndex(COL_ID) + 1)
+                db.update(
+                    TABLE_NAME, cv, "$COL_NAME+?",
+                    arrayOf(result.getString(result.getColumnIndex(COL_NAME)))
+                )
+            } while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+    }
+    fun deleteOneData(id: Int) {
+        val db = this.readableDatabase
+        db.execSQL("DELETE FROM $TABLE_NAME WHERE id=$id")
+        db.close()
+    }
 }
+
+
+
+
+
+
+

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheQuiz">
         <activity
+            android:name=".ApiTestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ListActivity"
+            android:exported="true" />
+        <activity
             android:name=".PlayerActivity"
             android:exported="true" />
         <activity
