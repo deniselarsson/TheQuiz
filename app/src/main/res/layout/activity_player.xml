@@ -49,7 +49,7 @@
         </Button>
     <Button
         android:id="@+id/btn_read"
-        android:text="Name List"
+        android:text="NickName List"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
