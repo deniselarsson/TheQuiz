@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-const val DATABASE_NAME = "TheQuiz"
+const val DATABASE_NAME = "Test"
 const val TABLE_NAME = "Users"
 const val COL_NAME = "name"
 const val COL_ID = "id"
