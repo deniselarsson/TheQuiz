@@ -29,9 +29,6 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_question)
 
-        mUserName = intent.getStringExtra(Constants.USER_NAME)
-
-        // mQuestionList = Constants.getQuestions()
         var rf = Retrofit.Builder()
             .baseUrl(QuestionApi.baseURL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -62,7 +59,6 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun setQuestion(){
         //why -1 because we want to start at index 0 and mine first index here is 1
         val question = mQuestionList!![mCurrentPosition -1]
-
         defaultOptionsView()
 
         if(mCurrentPosition == mQuestionList!!.size){
