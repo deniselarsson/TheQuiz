@@ -31,7 +31,6 @@ class ListActivity : AppCompatActivity() {
         btn_delete.setOnClickListener {
             if (deleteId.text.toString().isNotEmpty()) {
                 db.deleteData(deleteId.text.toString().toInt())
-                db.updateData()
                 btn_list.performClick()
             } else {
                 Toast.makeText(context, "Fill a number to delete.", Toast.LENGTH_SHORT).show()

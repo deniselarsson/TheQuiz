@@ -52,9 +52,10 @@
             android:padding="10dp"
             android:layout_weight="1"
             android:background="@drawable/btn_bg"/>
+
         <Button
             android:id="@+id/btn_start"
-            android:text="Start"
+            android:text="Play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
